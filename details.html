@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="index.js"></script>
+    <script src="sweets.js"></script>
+</head>
+
+<body onload="initDetails()">
+    <div class="tab">
+        <a href="./index.html" >
+          Home
+        </a>
+        <a href="./products.html" id="Home">
+          Products
+        </a>
+        <a>
+          Contact
+        </a>
+        <img src="./images/logo.png" alt="logo" class="logo" />
+        <div class="cartDiv">
+          <img src="./images/cart.png" alt="cart" class="cart" />
+          <div class="numItems">1</div>
+        </div>
+      </div>
+    <div class="detailsSection">
+        <div class="left">
+            <div class="images">
+                <img src="./images/cinn1.jpg" class="mainImg" id="mainImg"/>
+                <div class="smallPics">
+                    <img src="./images/cinn1.jpg" onclick="changeImg(this.id)" class="miniImg" id="miniImg1"/>
+                    <img src="./images/cinn1.jpg" onclick="changeImg(this.id)" class="miniImg" id="miniImg2"/>
+                    <img src="./images/cinn1.jpg" onclick="changeImg(this.id)" class="miniImg" id="miniImg3"/>
+                </div>
+            </div>
+            <h3>Ingredients</h3>
+            <p id="ingredients">enriched flour (bleached wheat flour, malted barley flour, niacin, reduced iron, thiamine mononitrate, riboflavin, folic acid), brown sugar, water, margari[partially hydrogenated soybean and cottonseed oils, liquid soybean oil, water, salt, mono and diglycerides, soy lecithin, whey solids, sodium benzoate (preservative), artificial flavor, beta carotene, vitamin a palmitate added], sugar, partially hydrogenated vegetable oil (soybean, cottonseed), cinnamon, eggs, buttermilk, yeast , salt, soybean oil, high fructose corn syrup, egg whites with sodium lauryl sulfate, whey, molasses, modified corn starch</p>
+        </div>
+        <div class="right">
+            <h2 id="pastryTitle">Original Cinnabon</h2>
+            <div class="stars">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+            <p id="price">$4.00</p>
+            <h3>Pick a glaze:</h3>
+            <form class="glazes">
+                <div class="check">
+                    <input type="checkbox" id="None" name="None" value="None">
+                    <label for="None">None</label><br>
+                </div>
+                <div class="check">
+                    <input type="checkbox" id="sugarMilk" name="sugarMilk" value="sugarMilk">
+                    <label for="sugarMilk">Sugar Milk</label><br>
+                </div>
+                <div class="check">
+                    <input type="checkbox" id="vanillaMilk" name="vanillaMilk" value="vanillaMilk">
+                    <label for="vanillaMilk">Vanilla Milk</label><br>
+                </div>
+                <div class="check">
+                    <input type="checkbox" id="doubleChocolate" name="doubleChocolate" value="doubleChocolate">
+                    <label for="doubleChocolate">Double Chocolate</label><br>
+                </div>
+                <input type="submit" value="Add to Cart" class="addToCart"></input>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>
