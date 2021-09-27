@@ -68,6 +68,8 @@ html {
   
 /* END of navbar code */
 
+
+
 /* START of homescreen code */
 .Home {
   font-family: sans-serif;
@@ -121,6 +123,8 @@ h2 {
 /* END of homescreen code */
 
 
+
+
 /* START of Products Page code */
 .productsHeader {
   text-align: left;
@@ -171,9 +175,6 @@ h2 {
   float: right;
 }
 
-/* .quickaddMenu {
-  width: 101%;
-} */
 
 .quickadd {
   height: 50px;
@@ -186,6 +187,8 @@ h2 {
 }
 
 /* END of products page code */
+
+
 
 /* START of details page */
 .detailsSection {
@@ -235,7 +238,7 @@ h2 {
 }
 
 .glazes .check {
-  width: 100%;
+  width: 90%;
   background-color: white;
   border: none;
   border-top: 1px solid lightgray;
@@ -266,3 +269,27 @@ h2 {
   color: orange;
 }
 /* END of details code */
+
+
+/* START of contact page code */
+
+
+.contactItem {
+  width: 90%;
+  margin: 20px;
+  border: 3px solid black;
+}
+
+.contactHeader {
+  background-color: black;
+  color: white;
+  text-align: center;
+  margin-top: 0px;
+  height: 40px;
+  padding-top: 20px;
+}
+
+.contactInfo {
+  margin: 20px;;
+}
+/* END of contact page code */
