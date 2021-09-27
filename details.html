@@ -51,19 +51,19 @@
             <h3>Pick a glaze:</h3>
             <form class="glazes">
                 <div class="check">
-                    <input type="checkbox" id="None" name="None" value="None">
+                    <input type="radio"  onclick="pickGlaze(this.id)" id="None" name="glaze" value="None">
                     <label for="None">None</label><br class="breakLine">
                 </div>
                 <div class="check">
-                    <input type="checkbox" id="sugarMilk" name="sugarMilk" value="sugarMilk">
+                    <input type="radio"  onclick="pickGlaze(this.id)" id="sugarMilk" name="glaze" value="sugarMilk">
                     <label for="sugarMilk">Sugar Milk</label><br class="breakLine">
                 </div>
                 <div class="check">
-                    <input type="checkbox" id="vanillaMilk" name="vanillaMilk" value="vanillaMilk">
+                    <input type="radio"  onclick="pickGlaze(this.id)" id="vanillaMilk" name="glaze" value="vanillaMilk">
                     <label for="vanillaMilk">Vanilla Milk</label><br class="breakLine">
                 </div>
                 <div class="check">
-                    <input type="checkbox" id="doubleChocolate" name="doubleChocolate" value="doubleChocolate">
+                    <input type="radio"  onclick="pickGlaze(this.id)" id="doubleChocolate" name="glaze" value="doubleChocolate">
                     <label for="doubleChocolate">Double Chocolate</label><br class="breakLine">
                 </div>
                 <input type="submit" value="Add to Cart" class="addToCart"></input>

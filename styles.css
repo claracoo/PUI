@@ -142,6 +142,31 @@ h2 {
   margin-left: 20%;
 }
 
+@media only screen and (max-width: 1200px) {
+  .productContainer {
+    width: 85%;
+    margin-left: 15%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .productContainer {
+    width: 90%;
+    margin-left: 10%
+  }
+}
+@media only screen and (max-width: 800px) {
+  .productContainer {
+    width: 95%;
+    margin-left: 5%
+  }
+}
+@media only screen and (max-width: 600px) {
+  .productContainer {
+    width: 99%;
+    margin-left: 1%
+  }
+}
+
 .item {
   width: 100%;
   margin: 20px;
@@ -230,6 +255,7 @@ h2 {
   border: 3px solid black;
   margin-top: 0;
   cursor: pointer;
+  max-width: 22%;
 }
 
 .right {
@@ -291,5 +317,29 @@ h2 {
 
 .contactInfo {
   margin: 20px;;
+}
+
+#hours {
+  margin-left: 10%;
+}
+
+.dayHours {
+  margin-top: 30px;
+}
+
+.day {
+  float: left;
+  margin-right: 20%;
+}
+
+.hours {
+  float: right;
+  margin-left: 20%;
+}
+
+.maps {
+  width: 100%;
+  /* margin-top: 18vh;
+  margin-bottom: 0px; */
 }
 /* END of contact page code */

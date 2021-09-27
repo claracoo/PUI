@@ -58,3 +58,7 @@ function changeImg(id) {
   document.getElementById(`miniImg3`).style.border = "3px solid black"
   document.getElementById(`${id}`).style.border = "3px solid #eab5eb"
 }
+
+function pickGlaze(id) {
+  localStorage.setItem("glaze", id);
+}
