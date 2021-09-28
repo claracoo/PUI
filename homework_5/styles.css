@@ -275,11 +275,11 @@ h2 {
 }
 
 .addToCart {
-  border: none;
-  background-color: black;
+  /* border: none;
+  background-color: black; */
   width: 100%;
   text-align: center;
-  color: white;
+  /* color: white; */
   height: 50px;
   box-shadow: rgba(0, 0, 0, 0.49);
 }
@@ -292,7 +292,7 @@ h2 {
 }
 
 .checked {
-  color: orange;
+  color: rgb(255, 178, 36);
 }
 /* END of details code */
 

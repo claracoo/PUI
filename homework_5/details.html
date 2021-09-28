@@ -22,7 +22,7 @@
         <img src="./images/logo.png" alt="logo" class="logo" />
         <div class="cartDiv">
           <img src="./images/cart.png" alt="cart" class="cart" />
-          <div class="numItems">1</div>
+          <div class="numItems">0</div>
         </div>
       </div>
     <div class="detailsSection">
@@ -66,7 +66,7 @@
                     <input type="radio"  onclick="pickGlaze(this.id)" id="doubleChocolate" name="glaze" value="doubleChocolate">
                     <label for="doubleChocolate">Double Chocolate</label><br class="breakLine">
                 </div>
-                <input type="submit" value="Add to Cart" class="addToCart"></input>
+                <input type="submit" value="Add to Cart" class="addToCart" onmouseover="addToCartHover()" onmouseout="addtoCartUnhover()"></input>
             </form>
 
         </div>

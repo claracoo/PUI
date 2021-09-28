@@ -1,3 +1,25 @@
+function initHome() {
+  getNumItems();
+}
+
+function initContact() {
+  getNumItems();
+}
+
+
+function getNumItems() {
+  if (localStorage.getItem("itemsInCart") == null) {
+    localStorage.setItem("itemsInCart", 0);
+    document.getElementsByClassName("numItems")[0].innerHTML = 0;
+  }
+  else {
+    document.getElementsByClassName("numItems")[0].innerHTML = localStorage.getItem("itemsInCart");
+  }
+}
+
+
+
+
 function initProducts() {
     let base = `<div class="productContainer">`
     for (var sweet of Object.values(sweets)) {
@@ -18,6 +40,7 @@ function initProducts() {
      base += `</div>`
 
      document.getElementById('onload').insertAdjacentHTML("beforeend", base)
+     getNumItems();
 }
 
 function goToDetails(name) {
@@ -26,14 +49,15 @@ function goToDetails(name) {
 }
 
 function initDetails() {
-    console.log(sweets)
-    let name = localStorage.getItem("name")
-    let img = sweets[name]["images"][0]
-    let img1 = sweets[name]["images"][1]
-    let img2 = sweets[name]["images"][2]
-    let ingredients = sweets[name]["ingredients"]
-    let price = sweets[name]["price"]
-    let rating = sweets[name]["rating"]
+    localStorage.removeItem("glaze");
+    console.log("init")
+    let name = localStorage.getItem("name");
+    let img = sweets[name]["images"][0];
+    let img1 = sweets[name]["images"][1];
+    let img2 = sweets[name]["images"][2];
+    let ingredients = sweets[name]["ingredients"];
+    let price = sweets[name]["price"];
+    let rating = sweets[name]["rating"];
     document.getElementById("pastryTitle").innerHTML = name + " Cinnabon";
     document.getElementById("mainImg").src = img;
     document.getElementById("miniImg1").src = img;
@@ -48,6 +72,15 @@ function initDetails() {
     for (var i of Array(rating).keys()) {
         stars[i].classList.add("checked")
     }
+
+    getNumItems();
+
+    let addButton = document.getElementsByClassName("addToCart")[0]
+    addButton.style.backgroundColor = "#6A6A6A";
+    addButton.style.color = "#B6B6B6";
+    addButton.style.cursor = "not-allowed";
+    addButton.style.border = "4px solid #6A6A6A";
+
 }
 
 function changeImg(id) {
@@ -60,5 +93,30 @@ function changeImg(id) {
 }
 
 function pickGlaze(id) {
-  localStorage.setItem("glaze", id);
+  for (var elem of document.getElementsByClassName("check")) {
+    if (elem.getElementsByTagName("input")[0].checked) {
+      localStorage.setItem("glaze", id)
+    }
+  }
+  addtoCartUnhover();
+}
+
+function addToCartHover() {
+  if (localStorage.getItem("glaze") != null) {
+    let addButton = document.getElementsByClassName("addToCart")[0]
+    addButton.style.backgroundColor = "white";
+    addButton.style.color = "black";
+    addButton.style.cursor = "pointer";
+    addButton.style.border = "4px solid black";
+  }
+}
+
+function addtoCartUnhover() {
+  if (localStorage.getItem("glaze") != null) {
+    let addButton = document.getElementsByClassName("addToCart")[0]
+    addButton.style.backgroundColor = "black";
+    addButton.style.color = "white";
+    addButton.style.cursor = "pointer";
+    addButton.style.border = "none";
+  }
 }
