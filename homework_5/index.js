@@ -23,10 +23,10 @@ function getNumItems() {
 function initProducts() {
     let base = `<div class="productContainer">`
     for (var sweet of Object.values(sweets)) {
-            let perItemBase = `<div class="item" onClick="goToDetails('${sweet.name}')">`; 
+            let perItemBase = `<div class="item">`; 
             perItemBase += `<div class="card">`; 
-              perItemBase += `<img src=${sweet.images[0]} class="cinnImg" alt="original cinnabon"></img>`; 
-              perItemBase += `<div class="cinnInfo">`; 
+              perItemBase += `<img src=${sweet.images[0]} class="cinnImg" alt="original cinnabon" onClick="goToDetails('${sweet.name}')"></img>`; 
+              perItemBase += `<div class="cinnInfo" onClick="goToDetails('${sweet.name}')">`; 
                 perItemBase += `<p class="cinnType">${sweet.name}</p>`; 
                 perItemBase += `<p class="cinnPrice">${sweet.price}</p>`; 
               perItemBase += `</div>`; 
