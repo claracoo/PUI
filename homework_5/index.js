@@ -67,11 +67,12 @@ function initDetails() {
     document.getElementById("ingredients").innerHTML = ingredients;
     document.getElementById("price").innerHTML = price;
 
-    let stars = document.getElementsByClassName("fa fa-star");
+    // library use commented out, but saving for later
+    // let stars = document.getElementsByClassName("fa fa-star");
 
-    for (var i of Array(rating).keys()) {
-        stars[i].classList.add("checked")
-    }
+    // for (var i of Array(rating).keys()) {
+    //     stars[i].classList.add("checked")
+    // }
 
     getNumItems();
 
