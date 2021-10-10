@@ -1,8 +1,27 @@
-function initHome() {
+function initNavbar(page) {
+  console.log("yo")
+  let homeStatus = "";
+  let productsStatus = "";
+  let contactStatus = "";
+  if (page == "Home") homeStatus = "Home"
+  else if (page == "Products") productsStatus = "Home"
+  else if (page == "Contact") contactStatus = "Home"
+  let base = ` <div class="navbarLinks"><a href="./index.html" id='${homeStatus}'>Home</a><a href='./products.html' id='${productsStatus}'>Products</a><a href="./contact.html" id='${contactStatus}'>Contact</a></div>
+  <img src="./images/logo.png" alt="logo" class="logo" />
+  <div class="cartDiv" onclick="navToCart()">
+    <img src="./images/cart.png" alt="cart" class="cart" />
+    <div class="numItems">0</div>
+  </div>`
+  document.getElementById('tab').insertAdjacentHTML("beforeend", base)
+}
+
+function initHome(page) {
+  initNavbar(page);
   getNumItems();
 }
 
-function initContact() {
+function initContact(page) {
+  initNavbar(page);
   getNumItems();
 }
 
@@ -17,10 +36,8 @@ function getNumItems() {
   }
 }
 
-
-
-
-function initProducts() {
+function initProducts(page) {
+    initNavbar(page);
     let base = `<div class="productContainer">`
     for (var sweet of Object.values(sweets)) {
             let perItemBase = `<div class="item">`; 
@@ -48,7 +65,8 @@ function goToDetails(name) {
     window.location = "./details.html"
 }
 
-function initDetails() {
+function initDetails(page) {
+    initNavbar(page);
     localStorage.removeItem("glaze");
     console.log("init")
     let name = localStorage.getItem("name");
@@ -120,4 +138,8 @@ function addtoCartUnhover() {
     addButton.style.cursor = "pointer";
     addButton.style.border = "none";
   }
+}
+
+function navToCart() {
+  window.location = "./cart.html"
 }

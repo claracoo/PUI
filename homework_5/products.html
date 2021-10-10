@@ -7,23 +7,8 @@
     <script src="sweets.js"></script>
 </head>
 
-<body onload="initProducts()">
-    <div class="tab">
-        <a href="./index.html" >
-          Home
-        </a>
-        <a id="Home">
-          Products
-        </a>
-        <a href="./contact.html">
-          Contact
-        </a>
-        <img src="./images/logo.png" alt="logo" class="logo" />
-        <div class="cartDiv">
-          <img src="./images/cart.png" alt="cart" class="cart" />
-          <div class="numItems">0</div>
-        </div>
-      </div>
+<body onload="initProducts('Products')">
+    <div id="tab"></div>
       <div id="Products" >
         <h1 class="productsHeader">Our Products</h1>
         <div id="onload"></div>
