@@ -1,0 +1,434 @@
+/* library use commented out, saving for later */
+/* @import url("https://fonts.googleapis.com/css?family=Aclonica");
+@import url("https://fonts.googleapis.com/css?family=Roboto"); */
+
+
+/* Citation: much of this code references w3schools, 
+especially for suggestions on how to use certain css attributes */
+
+
+
+/* START of navbar code */
+html {
+  font-family: sans-serif;
+}
+
+#tab {
+    /* overflow: hidden; */
+    background-color: white;
+    height: 70px;
+    position: sticky;
+  }
+  
+  .navbarLinks {
+    float: left;
+    margin-top: 23px;
+    cursor: pointer;
+    font-size: 17px;
+    background-color: white;
+    border: none;
+    text-decoration: none;
+  }
+  .navbarLinks a {
+    text-decoration: none;
+    margin: 20px 16px;
+    text-align: center;
+    color: black;
+  }
+
+  tab a:visited {
+    color: inherit;
+  }
+  
+  .tab a:hover {
+    border-bottom: 4px solid #999999;
+  }
+
+  /* this will need to be changed for the other pages */
+  #Home {
+    border-bottom: 4px solid #B5E8EB;
+  }
+  
+  .logo {
+    height: 100%;
+    left: 100%;
+    margin-left: 25%;
+  }
+  
+  .cartDiv {
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    float: right;
+    top: 0px;
+    right: 0px;
+    width: 25%;
+  }
+  
+  .numItems {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #eab5eb;
+    border-radius: 50%;
+    width: 20px;
+  }
+  
+  .cart {
+    margin-top: 15px;
+    width: 40px;
+    position: absolute;
+    right: 10px;
+  }
+
+  #cartOnHover {
+   margin-top: 60px;
+   border: 2px solid black;
+   padding: 20px 0px;
+   display: none;
+   background-color: white;
+   position: absolute;
+   z-index: 10;
+   width: 100%;
+  }
+
+  .cartElem {
+    height: 70px;
+  }
+
+  .leftCartHover {
+    width: 75%;
+    float: left;
+    font-size: 15px;
+  }
+
+  .elemInfo {
+    margin-bottom: 5px;
+    font-family: sans-serif;
+    text-align: left;
+    padding-left: 8%;
+  }
+
+  .glaze {
+    font-size: 10px;
+    margin-top: 0px;
+    font-family: sans-serif;
+    text-align: left;
+    padding-left: 15%;
+  }
+
+
+  .rightCartHover {
+    width: 25%;
+    font-size: 15px;
+    float: right;
+  }
+
+  .price {
+    font-family: sans-serif;
+  }
+
+  .viewCart {
+    height: 50px;
+    width: 80%;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    margin-top: 20px;
+  }
+
+  .viewCart:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+  }
+  
+/* END of navbar code */
+
+
+
+/* START of homescreen code */
+/* .homepage {
+  position: relative;
+} */
+
+.Home {
+  font-family: sans-serif;
+  text-align: center;
+  height: 100vh;
+  max-width: 100%;
+  overflow:scroll;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+}
+
+.homeImg {
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 0;
+}
+
+.homeImgDiv {
+  position: relative;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 65ch;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 10%;
+}
+
+.homeDesc {
+  padding: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 60px;
+  text-shadow: 1px 1px #ffffff;
+}
+
+p {
+  font-family: "Roboto";
+}
+
+h2 {
+  font-size: 30px;
+  margin: 0px;
+}
+
+/* END of homescreen code */
+
+
+
+
+/* START of Products Page code */
+.productsHeader {
+  text-align: left;
+  margin-left: 20%;
+  font-size: 40px;
+}
+
+.productContainer {
+  display: grid;
+  grid-template-columns: 27% 27% 27%;
+  grid-template-rows: auto;
+
+  width: 80%;
+  height: 80vh;
+  margin-left: 20%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .productContainer {
+    width: 85%;
+    margin-left: 15%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .productContainer {
+    width: 90%;
+    margin-left: 10%
+  }
+}
+@media only screen and (max-width: 800px) {
+  .productContainer {
+    width: 95%;
+    margin-left: 5%
+  }
+}
+@media only screen and (max-width: 600px) {
+  .productContainer {
+    width: 99%;
+    margin-left: 1%
+  }
+}
+
+.item {
+  width: 100%;
+  margin: 20px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%;
+}
+
+.cinnImg {
+  width: 99%;
+  border: 2px solid black;
+  height: 160px;
+}
+
+.cinnInfo {
+  border: 2px solid black;
+  height: 50px;
+  width: 99%;
+  margin-top: -5px;
+}
+
+.cinnType {
+  margin-left: 5%;
+  float: left;
+}
+
+.cinnPrice {
+  margin-right: 5%;
+  float: right;
+}
+
+
+.quickadd {
+  height: 50px;
+  width: 100.5%;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border: none;
+  border: 20px solid black;
+}
+
+/* END of products page code */
+
+
+
+/* START of details page */
+.detailsSection {
+  height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-left: 25%;
+  display: table;
+  margin-top: 70px;
+}
+
+.left {
+  width: 45%;
+  float: left;
+  margin-right: 10%;
+}
+
+.images {
+  border: 2px solid black;
+}
+
+.mainImg {
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+
+.smallPics {
+  height: 50px;
+  padding-left: 17%;
+  margin-top: -4px;
+  background-color: black;
+}
+
+.miniImg {
+  height: 88%;
+  border: 3px solid black;
+  margin-top: 0;
+  cursor: pointer;
+  max-width: 22%;
+}
+
+.right {
+  width: 45%;
+  float: right;
+}
+
+.glazes .check {
+  width: 90%;
+  background-color: white;
+  border: none;
+  border-top: 1px solid lightgray;
+  height: 30px;
+  cursor: pointer;
+  text-align: left;
+  padding: 5%;
+}
+
+.addToCart {
+  /* border: none;
+  background-color: black; */
+  width: 100%;
+  text-align: center;
+  /* color: white; */
+  height: 50px;
+  /* box-shadow: rgba(0, 0, 0, 0.49); */
+}
+
+.addToCart:hover {
+    background-color: white;
+    color: black;
+    border: 4px solid black;
+    cursor: pointer;
+}
+
+.checked {
+  color: rgb(255, 178, 36);
+}
+/* END of details code */
+
+
+/* START of contact page code */
+
+
+.contactItem {
+  width: 90%;
+  margin: 20px;
+  border: 3px solid black;
+}
+
+.contactHeader {
+  background-color: black;
+  color: white;
+  text-align: center;
+  margin-top: 0px;
+  height: 40px;
+  padding-top: 20px;
+}
+
+.contactInfo {
+  margin: 20px;;
+}
+
+#hours {
+  margin-left: 10%;
+}
+
+.dayHours {
+  margin-top: 30px;
+}
+
+.day {
+  float: left;
+  margin-right: 20%;
+}
+
+.hours {
+  float: right;
+  margin-left: 20%;
+}
+
+.maps {
+  width: 100%;
+  /* margin-top: 18vh;
+  margin-bottom: 0px; */
+}
+/* END of contact page code */

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <!-- library use commented out, but saving for later -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <script src="sweets.js"></script>
+    <script src="cart.js"></script>
+</head>
+
+<body onload="initDetails('Products')">
+    <div id="tab"></div>
+    <div class="detailsSection">
+        <div class="left">
+            <div class="images">
+                <img src="./images/cinn1.jpg" class="mainImg" id="mainImg"/>
+                <div class="smallPics">
+                    <img src="./images/cinn1.jpg" onclick="changeImg(this.id)" class="miniImg" id="miniImg1"/>
+                    <img src="./images/cinn1.jpg" onclick="changeImg(this.id)" class="miniImg" id="miniImg2"/>
+                    <img src="./images/cinn1.jpg" onclick="changeImg(this.id)" class="miniImg" id="miniImg3"/>
+                </div>
+            </div>
+            <h3>Ingredients</h3>
+            <p id="ingredients">enriched flour (bleached wheat flour, malted barley flour, niacin, reduced iron, thiamine mononitrate, riboflavin, folic acid), brown sugar, water, margari[partially hydrogenated soybean and cottonseed oils, liquid soybean oil, water, salt, mono and diglycerides, soy lecithin, whey solids, sodium benzoate (preservative), artificial flavor, beta carotene, vitamin a palmitate added], sugar, partially hydrogenated vegetable oil (soybean, cottonseed), cinnamon, eggs, buttermilk, yeast , salt, soybean oil, high fructose corn syrup, egg whites with sodium lauryl sulfate, whey, molasses, modified corn starch</p>
+        </div>
+        <div class="right">
+            <h2 id="pastryTitle">Original Cinnabon</h2>
+            <!-- library use commented out, but saving for later -->
+            <!-- <div class="stars">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div> -->
+            <p id="price">$4.00</p>
+            <h3>Pick a glaze:</h3>
+            <form class="glazes" id="glazeChoice">
+                <div class="check">
+                    <input type="radio"  onclick="pickGlaze(this.id)" id="None" name="glaze" value="None">
+                    <label for="None">None</label><br class="breakLine">
+                </div>
+                <div class="check">
+                    <input type="radio"  onclick="pickGlaze(this.id)" id="Sugar Milk" name="glaze" value="sugarMilk">
+                    <label for="sugarMilk">Sugar Milk</label><br class="breakLine">
+                </div>
+                <div class="check">
+                    <input type="radio"  onclick="pickGlaze(this.id)" id="Vanilla Milk" name="glaze" value="vanillaMilk">
+                    <label for="vanillaMilk">Vanilla Milk</label><br class="breakLine">
+                </div>
+                <div class="check">
+                    <input type="radio"  onclick="pickGlaze(this.id)" id="Double Chocolate" name="glaze" value="doubleChocolate">
+                    <label for="doubleChocolate">Double Chocolate</label><br class="breakLine">
+                </div>
+                <input type="submit" value="Add to Cart" class="addToCart" onmouseover="addToCartHover()" onmouseout="addtoCartUnhover()" ></input>
+            </form>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
