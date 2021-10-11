@@ -108,19 +108,23 @@ function getNumItems() {
     let allCinns = 0;
     let totalPrice = 0;
     for (let cinn of cart) {
-      allCinns += cinn.quantity
-      let priceAsNum = Number(cinn.price.replace("$", ""))
-      totalPrice += priceAsNum
+      allCinns += cinn.quantity;
+      let priceAsNum = Number(cinn.price.replace("$", ""));
+      let priceForThis = priceAsNum * cinn.quantity;
+      totalPrice += priceForThis;
       base += `<div id="${count}" class="cartElem">
                 <div class="leftCartHover">
                     <p class="elemInfo"><span class="quantity">${cinn.quantity}</span>x <span class="name">${cinn.name}</span> Cinnabon</p>
                     <p class="glaze">${cinn.glaze} Glaze</p>
                 </div>
                 <div class="rightCartHover">
-                    <p class="price">${cinn.price}</p>
+                    <p class="price">$${priceForThis}.00</p>
                 </div>
               </div>`
         count += 1
+    }
+    if (allCinns == 0) {
+      base += `<p>Looks like there's nothing in your cart :(</p>`
     }
     base += `<button class="viewCart" onclick="navToCart()">View Cart ($${totalPrice}.00)</button>`
     console.log(base)
