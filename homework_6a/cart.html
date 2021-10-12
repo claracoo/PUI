@@ -9,6 +9,35 @@
     </head>
     <body onload="initCart('')" >
         <div id="tab"></div>
+        <div class="cartPage">
+            <div class="cartSection">
+                <div class="cartTitle"><h1>My Cart</h1></div>
+                <div class="Table">
+                    <div class="cartLeft">
+                        <div class="itemHeader">
+                            <input type="checkbox" id="Items" name="Items" value="Items" checked="true">
+                            <label for="Items">Items</label><br class="breakLine">
+                        </div>
+                        <div class="cartBody"></div>
+                    </div>
+                    <div class="cartRight">
+                        <h2>Checkout</h2>
+
+                        <div class="checkoutBody">
+                            <div class="checkoutContents">
+                                
+                            </div>
+                            <p class="checkoutLeft">Tax</p>
+                            <p class="checkoutRight">0.82</p>
+                            <hr class="divLine"/>
+                            <p class="checkoutLeft">Total</p>
+                            <p class="checkoutRight" id="totalPrice">4.82</p>
+                            <button class="checkout">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <script src="index.js"></script>

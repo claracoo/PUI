@@ -96,6 +96,43 @@ function initProducts(page) {
 function initCart(page) {
   initNavbar(page);
   getNumItems();
+  let baseCartBody = `<div class="cartElems">`;
+  let baseCheckoutBody = ``;
+  let totalPrice = 0;
+  let count = 0;
+  let cart = JSON.parse(localStorage.getItem("cart"));
+  for (let cinn of cart) {
+    baseCartBody += `<div class="cartItem" id="cartItem${count}">
+                        <input type="checkbox" id="cartItem${count}" name="cartItem${count}" checked="true">
+                        <label for="cartItem${count}">
+                            <div>
+                                <div class="cartItemLeft">
+                                    <p class="cartCinn"><span class="cartCinnName">${cinn.name}</span> Cinnabon</p>
+                                    <p class="cartCinnGlaze"><span class="cartItemGlaze">${cinn.glaze}</span> Glaze</p>
+                                </div>
+                                <div class="cartItemRight">
+                                    <p class="cartItemPrice">${cinn.price}</p>
+                                    <div class="cartItemQuantChanger">
+                                        <button>-</button>
+                                        <p class="perItemQuant">${cinn.quantity}</p>
+                                        <button>+</button>
+                                    </div>        
+                                </div>
+                            </div>
+                        </label><br class="breakLine">
+                      </div>`
+    baseCheckoutBody += `<p class="checkoutLeft" id="checkoutItem${count}">${cinn.quantity}x ${cinn.name} Cinnabon with ${cinn.glaze} Glaze</p>
+                          <p class="checkoutRight" id="checkoutPrice${count}">${cinn.quantity * Number(cinn.price.replace("$", ""))}.00</p>`
+    totalPrice += cinn.quantity * Number(cinn.price.replace("$", ""));
+  }
+  // console.log(base)
+  totalPrice += 0.82
+  baseCartBody += `</div><button class="emptyCart">Empty Cart</button>`
+  console.log(document.getElementsByClassName('cartBody')[0])
+  document.getElementsByClassName('cartBody')[0].insertAdjacentHTML("beforeend", baseCartBody)
+  document.getElementsByClassName('checkoutContents')[0].insertAdjacentHTML("beforeend", baseCheckoutBody)
+  document.getElementById("totalPrice").innerHTML = totalPrice
+  document.getElementsByClassName("checkout")[0].innerHTML = `Checkout ($${totalPrice})`
 }
 
 
