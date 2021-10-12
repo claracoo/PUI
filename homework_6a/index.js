@@ -176,7 +176,12 @@ function addNumToCart(name, glaze, idx) {
 
 function emptyCart() {
   localStorage.setItem("cart", JSON.stringify([]));
-  initCart()
+  initCart();
+}
+
+function checkout() {
+  emptyCart();
+  window.location = "./index.html";
 }
 
 function getNumItems() {

@@ -603,6 +603,10 @@ h2 {
   overflow: scroll;
 }
 
+.checkoutContents p {
+  text-align: left;
+}
+
 .checkoutLeft {
   margin-left: 3%;
   width: 80%;
