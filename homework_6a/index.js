@@ -1,7 +1,6 @@
 // const { get } = require("http");
 
 function initNavbar(page) {
-  console.log(page)
   let homeStatus = "";
   let productsStatus = "";
   let contactStatus = "";
@@ -133,9 +132,8 @@ function initCart(page) {
   }
   else {
     totalPrice += 0.82
-    baseCartBody += `</div><button class="emptyCart">Empty Cart</button>`
+    baseCartBody += `</div><button class="emptyCart" onclick="emptyCart()">Empty Cart</button>`
   }
-  console.log(document.getElementsByClassName('cartBody')[0])
   document.getElementsByClassName('cartBody')[0].innerHTML = ""
   document.getElementsByClassName('cartBody')[0].insertAdjacentHTML("beforeend", baseCartBody)
   document.getElementsByClassName('checkoutContents')[0].innerHTML = ""
@@ -157,7 +155,7 @@ function subtractNumFromCart(name, glaze, idx) {
   }
   document.getElementById(`perItemQuant${idx}`).innerHTML = newQuant;
 
-  if (cart[idx].quantity == 0) cart.splice(idx, 1)
+  for (let i in cart) if (Number(cart[i].quantity) == 0) cart.splice(i, 1)
   localStorage.setItem('cart', JSON.stringify(cart));
   initCart();
 }
@@ -174,6 +172,11 @@ function addNumToCart(name, glaze, idx) {
   document.getElementById(`perItemQuant${idx}`).innerHTML = newQuant;
   localStorage.setItem('cart', JSON.stringify(cart));
   initCart();
+}
+
+function emptyCart() {
+  localStorage.setItem("cart", JSON.stringify([]));
+  initCart()
 }
 
 function getNumItems() {
@@ -203,7 +206,6 @@ function getNumItems() {
       base += `<p>Looks like there's nothing in your cart :(</p>`
     }
     base += `<button class="viewCart" onclick="navToCart()">View Cart ($${totalPrice}.00)</button>`
-    console.log(base)
     document.getElementById("cartOnHover").innerHTML = base;
     document.getElementsByClassName("numItems")[0].innerHTML = allCinns.toString()
 
