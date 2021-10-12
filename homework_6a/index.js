@@ -102,7 +102,7 @@ function initCart(page) {
   let cart = JSON.parse(localStorage.getItem("cart"));
   for (let cinn of cart) {
     baseCartBody += `<div class="cartItem" id="cartItem${count}">
-                        <input type="checkbox" id="cartItem${count}" name="cartItem${count}" checked="true">
+                        <div style="height: 10px"></div>
                         <label for="cartItem${count}">
                             <div>
                                 <div class="cartItemLeft">
