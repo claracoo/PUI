@@ -113,9 +113,9 @@ function initCart(page) {
                                 <div class="cartItemRight">
                                     <p class="cartItemPrice">${cinn.price}</p>
                                     <div class="cartItemQuantChanger">
-                                        <button>-</button>
-                                        <p class="perItemQuant">${cinn.quantity}</p>
-                                        <button>+</button>
+                                        <button onClick="subtractNumFromCart('${cinn.name}', '${cinn.glaze}', '${count}')">-</button>
+                                        <p class="perItemQuant" id="perItemQuant${count}">${cinn.quantity}</p>
+                                        <button onClick="addNumToCart('${cinn.name}', '${cinn.glaze}', '${count}')">+</button>
                                     </div>        
                                 </div>
                             </div>
@@ -125,17 +125,56 @@ function initCart(page) {
                           <p class="checkoutRight" id="checkoutPrice${count}">${cinn.quantity * Number(cinn.price.replace("$", ""))}.00</p>`
     totalPrice += cinn.quantity * Number(cinn.price.replace("$", ""));
   }
-  // console.log(base)
-  totalPrice += 0.82
-  baseCartBody += `</div><button class="emptyCart">Empty Cart</button>`
+  
+  if (cart.length == 0){
+    baseCartBody += `<p style="margin-left: 10px">Looks like there is nothing in your cart :(</p></div>`
+    baseCheckoutBody += `<p style="margin-left: 10px">Looks like there is nothing to checkout :(</p></div>`
+    document.getElementById("taxPrice").innerHTML = 0.00
+  }
+  else {
+    totalPrice += 0.82
+    baseCartBody += `</div><button class="emptyCart">Empty Cart</button>`
+  }
   console.log(document.getElementsByClassName('cartBody')[0])
+  document.getElementsByClassName('cartBody')[0].innerHTML = ""
   document.getElementsByClassName('cartBody')[0].insertAdjacentHTML("beforeend", baseCartBody)
+  document.getElementsByClassName('checkoutContents')[0].innerHTML = ""
   document.getElementsByClassName('checkoutContents')[0].insertAdjacentHTML("beforeend", baseCheckoutBody)
   document.getElementById("totalPrice").innerHTML = totalPrice
   document.getElementsByClassName("checkout")[0].innerHTML = `Checkout ($${totalPrice})`
 }
 
+function subtractNumFromCart(name, glaze, idx) {
+  let newQuant = 0;
+  let cart = JSON.parse(localStorage.getItem("cart"));
+  for (let cinn of cart) {
+    if (name == cinn.name && glaze == cinn.glaze) {
+      if (Number(cinn.quantity) > 0) {
+        cinn.quantity = Number(cinn.quantity) - 1;
+        newQuant = Number(cinn.quantity);
+      }
+    }
+  }
+  document.getElementById(`perItemQuant${idx}`).innerHTML = newQuant;
 
+  if (cart[idx].quantity == 0) cart.splice(idx, 1)
+  localStorage.setItem('cart', JSON.stringify(cart));
+  initCart();
+}
+
+function addNumToCart(name, glaze, idx) {
+  let newQuant = 0;
+  let cart = JSON.parse(localStorage.getItem("cart"));
+  for (let cinn of cart) {
+    if (name == cinn.name && glaze == cinn.glaze) {
+        cinn.quantity = Number(cinn.quantity) + 1;
+        newQuant = Number(cinn.quantity);
+    }
+  }
+  document.getElementById(`perItemQuant${idx}`).innerHTML = newQuant;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  initCart();
+}
 
 function getNumItems() {
   if (localStorage.getItem("cart")) {
@@ -267,6 +306,7 @@ form.addEventListener('submit', logSubmit);
 function showHoverCart() {
   document.getElementById("cartOnHover").style.display = "block"
 }
+
 function hideHoverCart() {
   document.getElementById("cartOnHover").style.display = "none"
 }
