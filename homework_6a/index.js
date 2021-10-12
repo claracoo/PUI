@@ -95,6 +95,7 @@ function initProducts(page) {
 function initCart(page) {
   initNavbar(page);
   getNumItems();
+  document.getElementsByClassName("cartDiv")[0].style.borderBottom = "4px solid #B5E8EB;"
   let baseCartBody = `<div class="cartElems">`;
   let baseCheckoutBody = ``;
   let totalPrice = 0;
