@@ -80,7 +80,7 @@ function initProducts(page) {
               perItemBase += `<p class="cinnPrice">${sweet.price}</p>`; 
             perItemBase += `</div>`; 
             perItemBase += `<div class="quickaddMenu">`; 
-              perItemBase += `<button class="quickadd">Quick Add</button>`; 
+              perItemBase += `<button class="quickadd" onClick="goToDetails('${sweet.name}')">See More</button>`; 
             perItemBase += `</div>`; 
           perItemBase += `</div>`; 
         perItemBase += `</div>`; 
