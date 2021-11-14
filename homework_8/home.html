@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple Recorder.js demo with record, stop and pause - addpipe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navlinks">
+        <a class="currentSection">VISUALIZE IT</a>
+        <a>ABOUT</a>
+        <a>RELATED ARTICLES</a>
+      </div>
+    </div>
+      <div class="header">
+        <h1 class="visualize">Visalize the Music</h1>
+        <img src="./images/logo.png" id="logo"/>
+      </div>
+    <div class="body">
+      <div class="left">
+        <div class="list">
+          <div class="tabs">
+            <p class="tabs_left" onclick="showListTab('block', 'none')">Through the Decades</p>
+            <p class="tabs_right" onclick="showListTab('none', 'block')">Create your own</p>
+          </div>
+          <div class="listBody">
+            <div class="listItem">
+              <img class="decadeImg" src="./images/40s.png"/>
+              <p class="decadeText">1940s</p>
+            </div>
+            <div class="recordList">
+                <div class="recordingControls">
+                    <div>
+                        <button disabled id="pauseButton"><i class="fa fa-pause-circle fa-2x"></i></button>
+                        <button id="playButton"><i class="fa fa-play-circle fa-2x"></i></button>
+                        <button id="recordButton">Record</button>
+                        <button id="stopButton">Stop</button>
+                        <div class="currentlyRecording">
+                            <p id="recordingStatus">Recording </p>
+                            <div id="recordingBeeper"></div>
+                            <p id="recordingTime">0:45s</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="graphSection"></div>
+        <div class="listSection">
+            <p><strong>Recordings:</strong></p>
+    <ol id="recordingsList"></ol>
+        </div>
+      </div>
+    </div>
+    <!-- <div id="controls">
+     <button id="recordButton">Record</button>
+     <button id="pauseButton" disabled>Pause</button>
+     <button id="stopButton" disabled>Stop</button>
+    </div>
+    <p><strong>Recordings:</strong></p>
+    <ol id="recordingsList"></ol> -->
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="app.js"></script>
+    <!-- <script src="js/wav.js"></script> -->
+    <!-- <script src="js/scripts/require.js"></script> -->
+    <!-- <script src="wav-decoder.js"></script> -->
+    <script src="main.js"></script>
+  </body>
+</html>

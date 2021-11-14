@@ -1,0 +1,284 @@
+a {
+    color: #7E838E;
+    margin-left: 20px;
+  }
+  p {
+    margin-top: 1rem;
+  }
+  a:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  body {
+      line-height: 1.5;
+      font-family: sans-serif;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      color:black;
+      margin:0;
+  }
+  
+  h1 {
+      font-size: 150%;
+      font-weight: bold;
+  }
+  
+  h2 {
+      font-weight: bold;
+      color: #005A9C;
+      font-size: 140%;
+      text-transform: uppercase;
+  }
+  
+  red {
+      color: red;
+  }
+  
+   #controls {
+    display: flex;
+    margin-top: 2rem;
+    max-width: 28em;
+  } 
+  
+   button {
+    flex-grow: 1;
+    height: 3.5rem;
+    min-width: 2rem;
+    border: none;
+    border-radius: 0.15rem;
+    background: #ed341d;
+    box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#ffffff;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  button:hover, button:focus {
+    outline: none;
+    background: #c72d1c;
+  }
+  
+  button::-moz-focus-inner {
+    border: 0;
+  }
+  
+  button:active {
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.2);
+    line-height: 3rem;
+  }
+  
+  button:disabled {
+    pointer-events: none;
+    background: lightgray;
+  }
+  button:first-child {
+    margin-left: 0;
+  }
+  
+  audio {
+    display: block;
+    width: 100%;
+    margin-top: 0.2rem;
+  }
+  
+  li {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  
+  #formats {
+    margin-top: 0.5rem;
+    font-size: 80%;
+  }
+  
+  #recordingsList{
+      max-width: 28em;
+  }
+  
+  .navbar {
+    background-color: #323945;
+    width: 100%;
+    height: 70px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+  }
+  
+  .navlinks{
+    margin-right: 20px;
+    float: right;
+    margin-top: 25px;
+  }
+  
+  .currentSection {
+    color: white;
+  }
+  
+  /* .body {
+   margin-top: -20px; 
+  } */
+  
+  .header {
+    margin-top: 0px;
+    height: 40px;
+    background-color: #EFEFEF;
+  }
+  
+  .visualize {
+    margin-top: 11px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    float: left;
+  }
+  
+  #logo {
+    height: 80%;
+    float: left;
+    margin-top: 4px;
+    border-radius: 8px;
+    margin-left: 10px;
+  }
+  
+  .body {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+  }
+  
+  .left {
+    flex: 25%;
+    margin-top: 0px;
+    height: 83vh;
+    float: left;
+    border-right: 3px solid #EFEFEF;
+  }
+  
+  .list{
+    width: 80%;
+    margin-top: 10px;
+    margin-left: 10%;
+  }
+  
+  .tabs {
+    height: 70px;
+    background-color: #EFEFEF;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .tabs_left {
+    margin-top: 20px;
+    margin-left: 5%;
+    height: 50px;
+    width: 45%;
+    float: left;
+    background-color: white;
+    color: black;
+    padding: 5px;
+  }
+  
+  .tabs_right {
+    margin-top: 20px;
+    height: 50px;
+    width: 45%;
+    float: left;
+    background-color: rgb(214, 214, 214);
+    color: black;
+    padding: 5px;
+  }
+  
+  .listBody {
+    margin-top: 10px;
+    background-color: #EFEFEF;
+    height: 65vh;
+    padding: 5px
+  }
+  
+  .listItem {
+    width: 98%;
+    height: 70px;
+    margin-left: 1%;
+    margin-bottom: 15px;
+    background-color: white;
+  }
+  
+  .decadeImg {
+    width: 55px;
+    border-radius: 50%;
+    float: left;
+    margin: 7.5px;
+  }
+  
+  .decadeText {
+    padding-top: 12%;
+    padding-left: 48%;
+    font-size: 20px;
+  }
+  
+  .recordList {
+    display: none;
+    background-color: white;
+    height: 100%;
+    /* padding: 10%; */
+  }
+  
+#pauseButton, #playButton  {
+      width: 100%;
+  }
+
+#recordButton, #stopButton {
+    width: 100%;
+    margin-top: 50px;
+    padding-inline-start: 4vw;
+    padding-inline-end : 4vw;
+}
+
+
+.recordingControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+.currentlyRecording {
+    display: flex;
+    flex-direction: row;
+}
+
+/* #recordingStatus {
+    float: left;
+} */
+
+#recordingTime {
+    margin-left: auto;
+}
+
+#recordingBeeper {
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: red;
+    margin-top: 13%;
+    margin-left: 2px;
+}
+  
+#stopButton{
+    display: none;
+}
+
+#playButton {
+    display: none;
+}
+  
+  
+  .right {
+    flex: 75%;
+  }
+  
+  
