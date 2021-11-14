@@ -15,6 +15,7 @@ var audioContext //audio context to help us record
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var pauseButton = document.getElementById("pauseButton");
+var playButton = document.getElementById("playButton");
 
 var analyser;
 var bufferLength;
@@ -29,6 +30,7 @@ var fundFreqIdx = 0;
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 pauseButton.addEventListener("click", pauseRecording);
+playButton.addEventListener("click", pauseRecording);
 
 function startRecording() {
     var constraints = { audio: true, video:false }
@@ -103,7 +105,8 @@ function stopRecording() {
     pauseButton.disabled = true;
 
     //reset button just in case the recording is stopped while paused
-    pauseButton.innerHTML="Pause";
+    pauseButton.style.display = "block";
+    playButton.style.display = "none";
     
     //tell the recorder to stop the recording
     rec.stop();
