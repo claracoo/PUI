@@ -38,6 +38,7 @@ function startRecording() {
     stopButton.style.display = "block";
     pauseButton.disabled = false
     console.log(stopButton, recordButton)
+    document.getElementsByClassName("currentlyRecording")[0].style.display = "flex"
 
     navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
         // console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
@@ -102,11 +103,13 @@ function stopRecording() {
     //disable the stop button, enable the record too allow for new recordings
     recordButton.style.display = "block";
     stopButton.style.display = "none";
+    document.getElementsByClassName("currentlyRecording")[0].style.display = "none"
     pauseButton.disabled = true;
 
     //reset button just in case the recording is stopped while paused
     pauseButton.style.display = "block";
     playButton.style.display = "none";
+    document.getElementById("recordingTime").innerHTML = "0:00s"
     
     //tell the recorder to stop the recording
     rec.stop();
@@ -137,7 +140,7 @@ function createDownloadLink(blob) {
     //save to disk link
     link.href = url;
     link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
-    link.innerHTML = "Save to disk";
+    link.innerHTML = "Download";
 
     //add the new audio element to li
     li.appendChild(au);
@@ -209,17 +212,28 @@ var detectPitch = function () {
     analyser.getByteFrequencyData(buffer)
     let volume = Math.max.apply(null, buffer)
     if (volume > 100) volume /= 4;
-
+    console.log(audioContext.currentTime)
     analyser.getByteTimeDomainData(buffer);
 
     var fundamentalFreq = findFundamentalFreq(buffer, audioContext.sampleRate);
     // console.log(fundamentalFreq, typeof fundamentalFreq);
-    if (fundamentalFreq > -1 && fundamentalFreq < 6000) soundData.push([fundamentalFreq, volume, timeCount])
+    if (fundamentalFreq > -1 && fundamentalFreq < 6000) soundData.push([fundamentalFreq, volume, audioContext.currentTime])
     else {
         pitch = determineIfMultNotes(buffer, fundamentalFreq)
-        if (pitch != -1) soundData.push([pitch, volume, timeCount])
-        else soundData.push([0, 0, timeCount])
+        if (pitch != -1) soundData.push([pitch, volume, audioContext.currentTime])
+        else soundData.push([0, 0, audioContext.currentTime])
     }
-    timeCount += 1;
+    let timeAsStr = String(audioContext.currentTime.toFixed(1))
+    if (timeAsStr[timeAsStr.length - 1] == "5") document.getElementById("recordingBeeper").style.display = "none"
+    if (timeAsStr[timeAsStr.length - 1] == "0") document.getElementById("recordingBeeper").style.display = "block"
+    document.getElementById("recordingTime").innerHTML = getTimerCount(Math.floor(audioContext.currentTime));
 }
 };
+
+function getTimerCount(time) {
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time % 60);
+    let formatted = minutes + ":" + seconds + "s"
+    if (seconds < 10) formatted = minutes + ":0" + seconds + "s"
+    return formatted
+}
