@@ -25,11 +25,8 @@ var soundData = [[], [], []];
 var fundFreqAbs = 440;
 var freqMap  = [fundFreqAbs, 466.16, 493.88, 246.94, 659.25, 554.37, 311.13, 783.99, 349.23, 587.33, 415.3, 622.25, 392, 138.59, 174.61, 196, 783.99, 880, 622.25]
 var fundFreqIdx = 0;
-var x = [];
-var y = [];
-var notes = [];
-var colors = [];
-var formattedtime = []
+var currentlySelected = [];
+var graphData = {}
 
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
@@ -121,32 +118,29 @@ function stopRecording() {
 
     //stop microphone access
     gumStream.getAudioTracks()[0].stop();
-
+    let id = Date.now()
+    graphData[`${id}`] = {}
     //create the wav blob and pass it on to createDownloadLink
     rec.exportWAV(createDownloadLink);
-    console.log(soundData)
-    setupDataForGraph()
-    console.log("pitches", JSON.stringify([x, y, colors, notes]));
-    displayGraph(x, y, notes, colors, formattedtime, "Your Recording 1")
-    x = [];
-    y = [];
-    notes = [];
-    colors = [];
-    formattedtime = [];
-    soundData = [];
-    console.log(x, y, notes, colors, formattedtime, soundData)
+    setupDataForGraph(id)
+    console.log("graphStop", Object.keys(graphData))
+
+    console.log("graph", graphData)
+    displayGraph(graphData[id]["x"], graphData[id]["y"], graphData[id]["notes"], graphData[id]["colors"], graphData[id]["formattedTime"], `Your Recording ${Object.keys(graphData).length}`)
+    soundData = [[], [], []]
 }
 
-function setupDataForGraph() {
+function setupDataForGraph(id) {
+    graphData[id] = {"x": [], "y": [], "notes": [], "colors": [], "formattedTime": []}
     for (let soundSet of soundData) {
         if (soundSet.length != 0 && soundSet[1] != 0) {
             let note = findNote(soundSet[0])[0]
             let color = findNote(soundSet[0])[1]
-            notes.push(note)
-            colors.push(color)
-            y.push(soundSet[1])
-            x.push(soundSet[2])
-            formattedtime.push(getTimerCount(soundSet[2]))
+            graphData[id]["notes"].push(note)
+            graphData[id]["colors"].push(color)
+            graphData[id]["y"].push(soundSet[1])
+            graphData[id]["x"].push(soundSet[2])
+            graphData[id]["formattedTime"].push(getTimerCount(soundSet[2]))
         }
     }
 }
@@ -165,55 +159,25 @@ function findNote(fundFreq){
 
 
 function createDownloadLink(blob) {
-    // requirejs(["wav-decoder"], function (WavDecoder) {
+    let potentialIds = Object.keys(graphData)
+    for (let i in potentialIds) potentialIds[i] = Number(potentialIds[i])
+    console.log(potentialIds)
+    let id = Math.max.apply(null, potentialIds)
+    console.log(id)
+    let currRecordsPresent = document.getElementById("recordingsList").childNodes.length;
     var url = URL.createObjectURL(blob);
-    var au = document.createElement('audio');
-    var li = document.createElement('li');
-    li.style.display = "flex";
-    li.style.justifyContent = "space-around";
-    li.style.alignItems = "flex-start"
-    li.style.paddingTop = "3px"
-    li.style.height = "50px"
-    var recording = document.createElement('div');
-    recording.style.width = "70%"
-    var link = document.createElement('a');
-    var cover = document.createElement('img');
-    cover.src = "./images/cover.png"
-    cover.style.width = "44px"
-    li.style.backgroundColor = "white"
-    var title = document.createElement("p")
-    title.innerHTML = "Your Recording 1"
-//  loadSample(url)
-//   .then(sample => playSample(sample));
-    //name of .wav file to use during upload and download (without extendion)
-    var filename = new Date().toISOString();
-
-    //add controls to the <audio> element
-    au.controls = true;
-    au.src = url;
-    au.style.height = "40px"
-
-    //save to disk link
-    // link.href = url;
-    // link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
-    // link.innerHTML = "Download";
-
-    li.appendChild(cover)
-    li.appendChild(title)
-
-    //add the new audio element to li
-    recording.appendChild(au);
-    
-    //add the filename to the div
-    // recording.appendChild(document.createTextNode(filename+".wav "))
-
-    //add the save to disk divnk to div
-    recording.appendChild(link);
-    li.appendChild(recording)
-
-
+    let li = `<li style="display: flex">
+                    <input type="checkbox" id=${id} name=${id} value=${id} style="margin-top: 18px; margin-right: 5px;" checked="true">
+                    <label for=${id} class="recordInList">
+                        <img src="./images/cover.png" style="width: 44px;">
+                        <p>Your Recording ${currRecordsPresent + 1}</p>
+                        <div style="width: 65%">
+                            <audio controls src=${url} style="height: 40px;"></audio>
+                        </div>
+                    </label>
+                </li>`
     //add the li element to the ol
-    recordingsList.appendChild(li);
+    recordingsList.insertAdjacentHTML("beforeend", li);
 };
 
 
