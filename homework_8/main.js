@@ -14,3 +14,8 @@ function showListTab(decadeStatus, createStatus) {
       document.getElementsByClassName("tabs_left")[0].style.backgroundColor = "rgb(214, 214, 214)";
     }
   }
+
+
+function loadHome() {
+  displayGraph([], [], [], [], [], "Waiting for Recordings")
+}

@@ -21,10 +21,15 @@ var analyser;
 var bufferLength;
 var dataArray;
 var timeCount = 0;
-var soundData = [];
+var soundData = [[], [], []];
 var fundFreqAbs = 440;
 var freqMap  = [fundFreqAbs, 466.16, 493.88, 246.94, 659.25, 554.37, 311.13, 783.99, 349.23, 587.33, 415.3, 622.25, 392, 138.59, 174.61, 196, 783.99, 880, 622.25]
 var fundFreqIdx = 0;
+var x = [];
+var y = [];
+var notes = [];
+var colors = [];
+var formattedtime = []
 
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
@@ -98,12 +103,12 @@ function pauseRecording(){
 }
 
 function stopRecording() {
-    console.log("stopButton clicked");
 
     //disable the stop button, enable the record too allow for new recordings
     recordButton.style.display = "block";
     stopButton.style.display = "none";
     document.getElementsByClassName("currentlyRecording")[0].style.display = "none"
+    document.getElementById("noRecordingsYet").style.display = "none"
     pauseButton.disabled = true;
 
     //reset button just in case the recording is stopped while paused
@@ -119,15 +124,65 @@ function stopRecording() {
 
     //create the wav blob and pass it on to createDownloadLink
     rec.exportWAV(createDownloadLink);
-    console.log("pitches", soundData);
+    console.log(soundData)
+    setupDataForGraph()
+    console.log("pitches", JSON.stringify([x, y, colors, notes]));
+    displayGraph(x, y, notes, colors, formattedtime, "Your Recording 1")
+    x = [];
+    y = [];
+    notes = [];
+    colors = [];
+    formattedtime = [];
+    soundData = [];
+    console.log(x, y, notes, colors, formattedtime, soundData)
 }
+
+function setupDataForGraph() {
+    for (let soundSet of soundData) {
+        if (soundSet.length != 0 && soundSet[1] != 0) {
+            let note = findNote(soundSet[0])[0]
+            let color = findNote(soundSet[0])[1]
+            notes.push(note)
+            colors.push(color)
+            y.push(soundSet[1])
+            x.push(soundSet[2])
+            formattedtime.push(getTimerCount(soundSet[2]))
+        }
+    }
+}
+
+function findNote(fundFreq){
+    let a4 = 440
+    let c0 = a4*Math.pow(2, -4.75)
+    let noteName = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+    let colorToNote = {"C": "#FFAEC6", "C#": "#FFC6EC", "D": "#FD85FF", "D#": "#D49EFF", "E": "#D49EFF", "F": "#A4CEFF", "F#": "#ACF5FF", "G": "#80FCED", "G#": "#ADF3C9", "A": "#EAFFC8", "A#": "#FFFCB2", "B": "#FFDCA7"}
+    
+    let h = Math.floor(12 * Math.log2(fundFreq/c0))
+    let octave = (h / 12).toFixed(0)
+    let n = h % 12
+    return [noteName[n] + String(octave), colorToNote[noteName[n]]]
+}
+
 
 function createDownloadLink(blob) {
     // requirejs(["wav-decoder"], function (WavDecoder) {
     var url = URL.createObjectURL(blob);
     var au = document.createElement('audio');
     var li = document.createElement('li');
+    li.style.display = "flex";
+    li.style.justifyContent = "space-around";
+    li.style.alignItems = "flex-start"
+    li.style.paddingTop = "3px"
+    li.style.height = "50px"
+    var recording = document.createElement('div');
+    recording.style.width = "70%"
     var link = document.createElement('a');
+    var cover = document.createElement('img');
+    cover.src = "./images/cover.png"
+    cover.style.width = "44px"
+    li.style.backgroundColor = "white"
+    var title = document.createElement("p")
+    title.innerHTML = "Your Recording 1"
 //  loadSample(url)
 //   .then(sample => playSample(sample));
     //name of .wav file to use during upload and download (without extendion)
@@ -136,20 +191,25 @@ function createDownloadLink(blob) {
     //add controls to the <audio> element
     au.controls = true;
     au.src = url;
+    au.style.height = "40px"
 
     //save to disk link
-    link.href = url;
-    link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
-    link.innerHTML = "Download";
+    // link.href = url;
+    // link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
+    // link.innerHTML = "Download";
+
+    li.appendChild(cover)
+    li.appendChild(title)
 
     //add the new audio element to li
-    li.appendChild(au);
+    recording.appendChild(au);
     
-    //add the filename to the li
-    li.appendChild(document.createTextNode(filename+".wav "))
+    //add the filename to the div
+    // recording.appendChild(document.createTextNode(filename+".wav "))
 
-    //add the save to disk link to li
-    li.appendChild(link);
+    //add the save to disk divnk to div
+    recording.appendChild(link);
+    li.appendChild(recording)
 
 
     //add the li element to the ol

@@ -98,7 +98,7 @@ a {
   }
   
   #recordingsList{
-      max-width: 28em;
+      /* max-width: 28em; */
   }
   
   .navbar {
@@ -284,5 +284,21 @@ a {
   .right {
     flex: 75%;
   }
+
+  .graphSection {
+    height: 300px;
+  }
   
+  .listSection {
+    height: 26vh;
+    background-color: #EFEFEF;
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+  }
+
+  .noRecordingsYet {
+   
+  }
   
