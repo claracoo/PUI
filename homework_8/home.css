@@ -289,12 +289,13 @@ a {
 
   .graphSection {
     height: 300px;
+    overflow: scroll;
   }
   
   .listSection {
-    height: 26vh;
+    height: 27.5vh;
     background-color: #EFEFEF;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px;
@@ -302,6 +303,13 @@ a {
 
   .noRecordingsYet {
    
+  }
+
+  .songLabel {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 20%;
+    height: 40px;
   }
   
 
@@ -314,3 +322,4 @@ a {
     background-color: white;
     width: 100%;
   }
+  

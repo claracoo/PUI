@@ -1,9 +1,9 @@
-function displayGraph(x, y, notes, colors, timeFormattted, title){
+function displayGraph(x, y, notes, colors, timeFormattted, title, id){
 d3.csv(
     "https://raw.githubusercontent.com/plotly/datasets/master/job-automation-probability.csv",
     function(rows) {
   
-      Plotly.newPlot('myDiv', {
+      Plotly.newPlot(`${id}`, {
         data: [
           {
             type: "scatter",
@@ -21,7 +21,7 @@ d3.csv(
           }
         ],
         layout: {
-            height: 350,
+            height: 320,
           title: title,
           hovermode: "closest",
           hoverlabel: { bgcolor: "#FFF" },
@@ -41,3 +41,14 @@ d3.csv(
   );
 }
   
+
+function processMultGraphs(graphData) {
+    let div = document.getElementsByClassName("graphSection")[0];
+    if (document.getElementById("zeroState")) document.getElementById("zeroState").remove()
+    for (let id of Object.keys(graphData)) {
+        let newGraph = document.createElement("div");
+        newGraph.id = "graph_" + id;
+        div.appendChild(newGraph)
+        displayGraph(graphData[id]["x"], graphData[id]["y"], graphData[id]["notes"], graphData[id]["colors"], graphData[id]["formattedTime"], `Your Recording ${Object.keys(graphData).length}`, newGraph.id)
+    }
+}

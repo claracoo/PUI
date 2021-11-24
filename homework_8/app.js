@@ -126,7 +126,7 @@ function stopRecording() {
     console.log("graphStop", Object.keys(graphData))
 
     console.log("graph", graphData)
-    displayGraph(graphData[id]["x"], graphData[id]["y"], graphData[id]["notes"], graphData[id]["colors"], graphData[id]["formattedTime"], `Your Recording ${Object.keys(graphData).length}`)
+    processMultGraphs(graphData)
     soundData = [[], [], []]
 }
 
@@ -149,7 +149,7 @@ function findNote(fundFreq){
     let a4 = 440
     let c0 = a4*Math.pow(2, -4.75)
     let noteName = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-    let colorToNote = {"C": "#FFAEC6", "C#": "#FFC6EC", "D": "#FD85FF", "D#": "#D49EFF", "E": "#D49EFF", "F": "#A4CEFF", "F#": "#ACF5FF", "G": "#80FCED", "G#": "#ADF3C9", "A": "#EAFFC8", "A#": "#FFFCB2", "B": "#FFDCA7"}
+    let colorToNote = {"C": "#FFAEC6", "C#": "#FFC6EC", "D": "#FD85FF", "D#": "#D49EFF", "E": "#809AF6", "F": "#A4CEFF", "F#": "#ACF5FF", "G": "#80FCED", "G#": "#ADF3C9", "A": "#EAFFC8", "A#": "#FFFCB2", "B": "#FFDCA7"}
     
     let h = Math.floor(12 * Math.log2(fundFreq/c0))
     let octave = (h / 12).toFixed(0)
@@ -166,7 +166,7 @@ function createDownloadLink(blob) {
     console.log(id)
     let currRecordsPresent = document.getElementById("recordingsList").childNodes.length;
     var url = URL.createObjectURL(blob);
-    let li = `<li style="display: flex">
+    let li = `<li style="display: flex; margin-bottom: 1px;">
                     <input type="checkbox" id=${id} name=${id} value=${id} style="margin-top: 18px; margin-right: 5px;" checked="true">
                     <label for=${id} class="recordInList">
                         <img src="./images/cover.png" style="width: 44px;">
