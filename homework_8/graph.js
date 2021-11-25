@@ -1,4 +1,4 @@
-function displayGraph(x, y, notes, colors, timeFormattted, title, id){
+function displayGraph(x, y, notes, colors, timeFormattted, title, id, height){
   // if (document.getElementById(id) == null) {
   //   console.log("um")
   //   let newDiv = document.createElement("div");
@@ -33,7 +33,8 @@ d3.csv(
           }
         ],
         layout: {
-            height: 320,
+            height: height,
+            // width: 320,
           title: title,
           hovermode: "closest",
           hoverlabel: { bgcolor: "#FFF" },
@@ -58,11 +59,14 @@ function processMultGraphs(graphData) {
     let div = document.getElementsByClassName("graphSection")[0];
     if (document.getElementById("zeroState")) document.getElementById("zeroState").style.display = "none"
     let count = 1
+    let height = 320
+    if (Object.keys(graphData).length > 1) height = 260
     for (let id of Object.keys(graphData)) {
         let newGraph = document.createElement("div");
         newGraph.id = "graph_" + id;
+        newGraph.classList.add("graphs");
         div.appendChild(newGraph)
-        displayGraph(graphData[id]["x"], graphData[id]["y"], graphData[id]["notes"], graphData[id]["colors"], graphData[id]["formattedTime"], `Your Recording ${count}`, newGraph.id)
+        displayGraph(graphData[id]["x"], graphData[id]["y"], graphData[id]["notes"], graphData[id]["colors"], graphData[id]["formattedTime"], `Your Recording ${count}`, newGraph.id, height)
         count +=  1
     }
 }

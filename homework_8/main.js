@@ -55,7 +55,7 @@ function showGraphOnSelect(id) {
 
 
 function loadHome() {
-  displayGraph([], [], [], [], [], "Waiting for Recordings", "zeroState")
+  displayGraph([], [], [], [], [], "Waiting for Recordings", "zeroState", 320)
 }
 
 function loadDecades() {}
