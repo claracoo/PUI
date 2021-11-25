@@ -7,7 +7,6 @@ function showGraphOnSelect(id) {
   }
   let noneShowing = true
   for (let id_label of Object.keys(graphData)) {
-    console.log(document.getElementById(id_label).checked)
     if (document.getElementById(id_label).checked){
       noneShowing = false
     } 

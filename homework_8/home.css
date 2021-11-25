@@ -23,6 +23,7 @@ a {
   h1 {
       font-size: 150%;
       font-weight: bold;
+      margin: 0px;
   }
   
   h2 {
@@ -290,7 +291,7 @@ a {
   }
 
   .graphSection {
-    height: 310px;
+    height: 330px;
     overflow: scroll;
     
     /* display: flex; */
@@ -330,4 +331,88 @@ a {
     background-color: white;
     width: 100%;
   }
+
+  .aboutBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .aboutPara {
+    width: 70%;
+    margin-top: 3rem;
+  }
   
+  .aboutBoxes {
+    width: 70%;
+    height: 65vh;
+    display: flex;
+  }
+
+  .aboutLeft {
+    width: 48%;
+    margin-right: 3%;
+  }
+
+  .axes {
+    height: 31vh;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    margin-bottom: 3vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px;
+  }
+
+  .axes h1, .aboutRight h1 {
+    font-size: 120%;
+    font-weight: lighter;
+    margin-bottom: 5px;
+  }
+
+  .axisImg {
+    display: flex;
+    justify-content: center;
+  }
+
+  .axes img, .aboutRight img {
+    width: 50%;
+  }
+
+  .aboutRight {
+    width: 48%;
+    height: 65vh;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px;
+  }
+
+  #pitchPic {
+    width: 40%;
+  }
+
+  .relatedBody {
+    height: 80vh;
+    overflow: scroll;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .article {
+    margin-top: 30px;
+    width: 70%;
+  }
+
+  .article a {
+    font-size: 150%;
+    color: blue;
+    margin-left: 0px;
+  }
+
+  .article h3{
+    font-size: 100%;
+    color: grey;
+  }

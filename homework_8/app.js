@@ -39,7 +39,6 @@ function startRecording() {
     recordButton.style.display = "none";
     stopButton.style.display = "block";
     pauseButton.disabled = false
-    console.log(stopButton, recordButton)
     document.getElementsByClassName("currentlyRecording")[0].style.display = "flex"
 
     navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
