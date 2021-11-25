@@ -1,4 +1,16 @@
 function displayGraph(x, y, notes, colors, timeFormattted, title, id){
+  // if (document.getElementById(id) == null) {
+  //   console.log("um")
+  //   let newDiv = document.createElement("div");
+  //   newDiv.id = id
+  //   console.log(newDiv)
+  //   document.getElementsByClassName("graphSection")[0].insertAdjacentHTML("beforeend", newDiv);
+  //   console.log(document.getElementsByClassName("graphSection")[0])
+  // }
+  // else {
+  //   if (document.getElementById("zeroState").display.style == "none") document.getElementById("zeroState").style.display = "block"
+  // }
+  // console.log(document.getElementById(id))
 d3.csv(
     "https://raw.githubusercontent.com/plotly/datasets/master/job-automation-probability.csv",
     function(rows) {
@@ -44,11 +56,13 @@ d3.csv(
 
 function processMultGraphs(graphData) {
     let div = document.getElementsByClassName("graphSection")[0];
-    if (document.getElementById("zeroState")) document.getElementById("zeroState").remove()
+    if (document.getElementById("zeroState")) document.getElementById("zeroState").style.display = "none"
+    let count = 1
     for (let id of Object.keys(graphData)) {
         let newGraph = document.createElement("div");
         newGraph.id = "graph_" + id;
         div.appendChild(newGraph)
-        displayGraph(graphData[id]["x"], graphData[id]["y"], graphData[id]["notes"], graphData[id]["colors"], graphData[id]["formattedTime"], `Your Recording ${Object.keys(graphData).length}`, newGraph.id)
+        displayGraph(graphData[id]["x"], graphData[id]["y"], graphData[id]["notes"], graphData[id]["colors"], graphData[id]["formattedTime"], `Your Recording ${count}`, newGraph.id)
+        count +=  1
     }
 }

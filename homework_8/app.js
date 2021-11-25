@@ -73,7 +73,7 @@ function startRecording() {
             if (rec.recording) {
                 detectPitch()
             }
-          }, 50);
+          }, 100);
          
     }).catch(function(err) {
         //enable the record button if getUserMedia() fails
@@ -131,6 +131,7 @@ function stopRecording() {
 }
 
 function setupDataForGraph(id) {
+    console.log(JSON.stringify(soundData))
     graphData[id] = {"x": [], "y": [], "notes": [], "colors": [], "formattedTime": []}
     for (let soundSet of soundData) {
         if (soundSet.length != 0 && soundSet[1] != 0) {
@@ -167,7 +168,7 @@ function createDownloadLink(blob) {
     let currRecordsPresent = document.getElementById("recordingsList").childNodes.length;
     var url = URL.createObjectURL(blob);
     let li = `<li style="display: flex; margin-bottom: 1px;">
-                    <input type="checkbox" id=${id} name=${id} value=${id} style="margin-top: 18px; margin-right: 5px;" checked="true">
+                    <input type="checkbox" id=${id} name=${id} value=${id} style="margin-top: 18px; margin-right: 5px;" checked="true" onclick="showGraphOnSelect(this.id)">
                     <label for=${id} class="recordInList">
                         <img src="./images/cover.png" style="width: 44px;">
                         <p>Your Recording ${currRecordsPresent + 1}</p>
@@ -236,9 +237,7 @@ var detectPitch = function () {
     analyser.getByteFrequencyData(buffer)
     let volume = Math.max.apply(null, buffer)
     if (volume > 100) volume /= 4;
-    console.log(audioContext.currentTime)
     analyser.getByteTimeDomainData(buffer);
-
     var fundamentalFreq = findFundamentalFreq(buffer, audioContext.sampleRate);
     // console.log(fundamentalFreq, typeof fundamentalFreq);
     if (fundamentalFreq > -1 && fundamentalFreq < 6000) soundData.push([fundamentalFreq, volume, audioContext.currentTime])
