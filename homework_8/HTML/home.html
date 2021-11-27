@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Homework 8</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../Assets/CSS/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://cdn.plot.ly/plotly-2.6.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+  </head>
+  <body onload="loadHome()">
+    <div class="navbar">
+      <div class="navlinks">
+        <a class="currentSection">VISUALIZE IT</a>
+        <a href="about.html">ABOUT</a>
+        <a href="related.html">RELATED ARTICLES</a>
+      </div>
+    </div>
+      <div class="header">
+        <h1 class="visualize">Visualize the Music</h1>
+        <img src="../Assets/images/logo.png" id="logo" alt="orange background with white music note"/>
+      </div>
+    <div class="body">
+      <div class="left">
+        <div class="list">
+          <div class="tabs">
+            <p class="tabs_right" >Create your own recording</p>
+          </div>
+          <div class="listBody">
+            <div class="recordList">
+                <div class="recordingControls">
+                    <div>
+                        <button disabled id="pauseButton"><i class="fa fa-pause-circle fa-2x"></i></button>
+                        <button id="playButton"><i class="fa fa-play-circle fa-2x"></i></button>
+                        <button id="recordButton">Record</button>
+                        <button id="stopButton">Stop</button>
+                        <div class="currentlyRecording">
+                            <p id="recordingStatus">Recording </p>
+                            <div id="recordingBeeper"></div>
+                            <p id="recordingTime">0:00s</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="graphSection">
+          <div id="zeroState"><!-- Plotly chart will be drawn inside this DIV --></div>
+        </div>
+        <div class="listSection">
+            <p id="noRecordingsYet"><strong>Try loading in some recordings!</strong></p>
+            <ol id="recordingsList"></ol>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="../Assets/js/app.js"></script>
+    <script src="../Assets/js/main.js"></script>
+    <script src="../Assets/js/graph.js"></script>
+  </body>
+</html>
