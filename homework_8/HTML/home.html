@@ -30,12 +30,13 @@
     <main>
     <div class="body">
       <div class="left">
-        <div class="list">
-          <div class="tabs">
+        <!-- <div class="list"> -->
+          <!-- <div class="tabs">
             <p class="tabs_right" >Create your own recording</p>
-          </div>
-          <div class="listBody">
+          </div> -->
+          <!-- <div class="listBody"> -->
             <div class="recordList">
+                <p class="recordingBlurb">Try creating your own recording.</p>
                 <div class="recordingControls">
                     <div>
                         <button disabled id="pauseButton" value="pause button"><i class="fa fa-pause-circle fa-2x"></i><span style="display: none;">pause</span></button>
@@ -49,8 +50,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-          </div>
+            <!-- </div> -->
+          <!-- </div> -->
         </div>
       </div>
       <div class="right">
@@ -58,7 +59,7 @@
           <div id="zeroState"><!-- Plotly chart will be drawn inside this DIV --></div>
         </div>
         <div class="listSection">
-            <p id="noRecordingsYet"><strong>Try loading in some recordings!</strong></p>
+            <div id="noRecordingsYet"><img src="../Assets/images/noRecordings.png" class="noRecordingsImages" alt="Try loading in some recordings text"/></div>
             <ol id="recordingsList"></ol>
         </div>
       </div>

@@ -122,6 +122,7 @@ function stopRecording() {
     stopButton.style.display = "none"; // toggle off stop button
     document.getElementsByClassName("currentlyRecording")[0].style.display = "none" // recording signifiers are off
     document.getElementById("noRecordingsYet").style.display = "none" // when we add new info to a graph, the graph is assumed to be on, so we shut off the default one
+    document.getElementsByClassName("listSection")[0].style.padding = "15px"
     pauseButton.disabled = true; // if we are not recording, we cannot pause
 
     //reset button just in case the recording is stopped while paused
@@ -137,6 +138,7 @@ function stopRecording() {
     let id = Date.now() // set arbitrary id for referencing purposes
     graphData[`${id}`] = {} // init empy object with that id so that we add info into it
     //create the wav blob and pass it on to createDownloadLink
+    console.log(document.getElementsByClassName("listSection")[0].style)
     rec.exportWAV(createDownloadLink); // turn it into a physical recording, stored temporarily
     setupDataForGraph(id) // put into data format the graph knows how to handle
     processMultGraphs(graphData)
